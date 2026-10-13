@@ -36,6 +36,7 @@ public class CourseSeedData {
         list.add(getCloudDevOpsPackage());
         list.add(getBusinessAnalyticsPackage());
         list.add(getFinancialAnalyticsPackage());
+        list.add(getBcaWebDevelopmentPackage());
         return list;
     }
 
@@ -300,6 +301,106 @@ public class CourseSeedData {
         p.add("What is the primary objective of a 'Three-Statement Financial Model' in corporate valuation?", "To simulate tax evasion strategies", "Dynamically linking Income Statement, Balance Sheet, and Cash Flow Statement to forecast financial performance", "To eliminate the need for accounting audits", "To track daily employee timesheets", "2", "Three-statement models link P&L, balance sheet, and cash flow dynamically via circular balance loops.");
         p.add("In cash flow modeling, what adjustment is made to Depreciation and Amortization in the Cash Flow from Operations section?", "D&A is subtracted from Net Income because it represents cash lost", "D&A is added back to Net Income because it is a non-cash expense", "D&A is ignored entirely in cash flow statements", "D&A is multiplied by the corporate tax rate", "2", "D&A was deducted on the P&L without actual cash outflow, so it is added back to reconcile operating cash.");
         p.add("What does 'Operating Leverage' measure in corporate cost structure analysis?", "The proportion of fixed costs versus variable costs in a firm's operational structure", "The amount of bank loans borrowed by the CEO", "The speed of inventory restocking", "The percentage of sales made online", "1", "High operating leverage indicates a high proportion of fixed costs, causing profits to swing sharply with sales.");
+
+        return p;
+    }
+
+    // 6. Web Development Fundamentals (BCA Track - 10 Basic Questions)
+    private static SeedCoursePackage getBcaWebDevelopmentPackage() {
+        Course c = new Course(
+                "Web Development Fundamentals",
+                "web-development-fundamentals",
+                "BCA",
+                "Foundational full stack web development certification evaluating essential HTML5 structure, semantic markup, CSS3 styling, responsive layouts, and core JavaScript DOM manipulation.",
+                15, 10, 60, 1, CourseStatus.PUBLISHED
+        );
+        c.setSyllabus(List.of(
+                "HTML5 Document Anatomy & Semantic Tags",
+                "CSS3 Styling, Box Model & Flexbox",
+                "JavaScript Variables, Functions & Logic",
+                "Browser DOM Manipulation & Event Handling"
+        ));
+
+        SeedCoursePackage p = new SeedCoursePackage(c);
+        p.add("What does HTML stand for in web development?", 
+              "HyperText Markup Language", 
+              "HighText Machine Language", 
+              "HyperTransfer Markup Language", 
+              "Home Tool Markup Language", 
+              "1", 
+              "HTML stands for HyperText Markup Language, the standard markup language for documents designed to be displayed in a web browser.");
+
+        p.add("Which HTML tag is used to define the most important, largest heading?", 
+              "<heading>", 
+              "<h6>", 
+              "<h1>", 
+              "<head>", 
+              "3", 
+              "<h1> defines the most important and largest top-level heading on an HTML web page.");
+
+        p.add("What does CSS stand for in web design?", 
+              "Computer Style Sheets", 
+              "Cascading Style Sheets", 
+              "Creative Style Systems", 
+              "Colorful Style Sheets", 
+              "2", 
+              "CSS stands for Cascading Style Sheets, used to format and style the layout of web pages.");
+
+        p.add("Which CSS property is used to change the text color of an element?", 
+              "font-color", 
+              "text-color", 
+              "color", 
+              "background-color", 
+              "3", 
+              "The 'color' property in CSS specifies the foreground color of text content.");
+
+        p.add("Which HTML tag is used to insert an image into a web page?", 
+              "<picture>", 
+              "<img>", 
+              "<image>", 
+              "<src>", 
+              "2", 
+              "The <img> tag is used to embed an image in an HTML document, utilizing the 'src' attribute for the image file path.");
+
+        p.add("Which HTML tag is used to create a hyperlink to another web page?", 
+              "<link>", 
+              "<a>", 
+              "<href>", 
+              "<navigate>", 
+              "2", 
+              "The <a> (anchor) tag defines a hyperlink that links one page or resource to another.");
+
+        p.add("Which keyword is NOT a valid way to declare a variable in modern JavaScript?", 
+              "var", 
+              "let", 
+              "const", 
+              "dim", 
+              "4", 
+              "'dim' is used in languages like Visual Basic. JavaScript uses 'var', 'let', and 'const' for variable declarations.");
+
+        p.add("Which CSS display property arranges elements in a flexible, one-dimensional layout?", 
+              "display: flex", 
+              "display: block", 
+              "display: inline", 
+              "display: none", 
+              "1", 
+              "Flexbox (display: flex) provides an efficient way to lay out, align, and distribute space among items in a container.");
+
+        p.add("Which method is used to write output or debug messages to the browser developer console in JavaScript?", 
+              "console.log()", 
+              "print()", 
+              "document.write()", 
+              "alert.log()", 
+              "1", 
+              "console.log() writes informational or debug messages directly to the browser's developer console.");
+
+        p.add("Which HTML tag is used to create an unordered (bulleted) list?", 
+              "<ol>", 
+              "<dl>", 
+              "<ul>", 
+              "<li>", 
+              "3", 
+              "The <ul> tag defines an unordered (bulleted) list, while <li> defines individual list items.");
 
         return p;
     }

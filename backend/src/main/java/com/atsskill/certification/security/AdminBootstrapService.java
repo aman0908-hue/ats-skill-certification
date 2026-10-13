@@ -111,14 +111,14 @@ public class AdminBootstrapService implements CommandLineRunner {
                 course.setCategory(pkg.course.getCategory());
                 course.setDescription(pkg.course.getDescription());
                 course.setSyllabus(pkg.course.getSyllabus());
-                course.setDurationMinutes(35);
-                course.setQuestionCount(30);
-                course.setPassingPercentage(60);
+                course.setDurationMinutes(pkg.course.getDurationMinutes());
+                course.setQuestionCount(pkg.course.getQuestionCount());
+                course.setPassingPercentage(pkg.course.getPassingPercentage());
                 course = courseRepository.save(course);
             }
 
             long currentQCount = questionRepository.countByCourseId(course.getId());
-            if (currentQCount < 30) {
+            if (currentQCount < pkg.course.getQuestionCount()) {
                 for (Question q : pkg.questions) {
                     q.setCourseId(course.getId());
                     q.setCreatedAt(Instant.now());
