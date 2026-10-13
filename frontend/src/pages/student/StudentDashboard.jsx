@@ -220,7 +220,7 @@ const StudentDashboard = () => {
               courses.filter(c => c.category === (user?.academicBranch || 'B.Tech')).length > 0
                 ? courses.filter(c => c.category === (user?.academicBranch || 'B.Tech'))
                 : courses
-            ).slice(0, 3).map((c) => (
+            ).map((c) => (
               <div key={c.id} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-2">

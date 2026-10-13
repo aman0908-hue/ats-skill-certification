@@ -37,6 +37,12 @@ public class CourseSeedData {
         list.add(getBusinessAnalyticsPackage());
         list.add(getFinancialAnalyticsPackage());
         list.add(getBcaWebDevelopmentPackage());
+        list.add(getDbmsPackage());
+        list.add(getJavaPackage());
+        list.add(getDsaPackage());
+        list.add(getAiPackage());
+        list.add(getDataAnalyticsPackage());
+        list.add(getCProgrammingPackage());
         return list;
     }
 
@@ -401,6 +407,606 @@ public class CourseSeedData {
               "<li>", 
               "3", 
               "The <ul> tag defines an unordered (bulleted) list, while <li> defines individual list items.");
+
+        return p;
+    }
+
+    // 7. Database Management Systems (DBMS) & SQL (BCA)
+    private static SeedCoursePackage getDbmsPackage() {
+        Course c = new Course(
+                "Database Management Systems (DBMS) & SQL",
+                "dbms-sql-fundamentals",
+                "BCA",
+                "Essential principles of Relational Databases, SQL queries, ER modeling, normalization, Primary & Foreign keys, and ACID transactions.",
+                15, 10, 60, 1, CourseStatus.PUBLISHED
+        );
+        c.setSyllabus(List.of(
+                "Introduction to DBMS & Relational Architecture",
+                "SQL DDL, DML, DQL Queries & Joins",
+                "Normalization (1NF, 2NF, 3NF, BCNF) & Integrity Constraints",
+                "ACID Properties, Transactions & Concurrency Control"
+        ));
+
+        SeedCoursePackage p = new SeedCoursePackage(c);
+        p.add("What is the primary purpose of a Database Management System (DBMS)?",
+              "To store, retrieve, and manage data efficiently and securely",
+              "To design user interface layouts",
+              "To compile Java source code",
+              "To route network packets across routers",
+              "1",
+              "A DBMS is software designed to store, manage, and retrieve structured data systematically and securely.");
+
+        p.add("Which SQL command is used to retrieve records from a database table?",
+              "GET",
+              "SELECT",
+              "EXTRACT",
+              "FETCH",
+              "2",
+              "The SELECT statement is used in SQL to query and retrieve records from one or more database tables.");
+
+        p.add("What is a Primary Key in a relational database?",
+              "A column that allows duplicate and NULL values",
+              "A column or set of columns that uniquely identifies each row in a table",
+              "An encrypted password string for user login",
+              "An external network gateway identifier",
+              "2",
+              "A Primary Key uniquely identifies each record in a table and cannot contain NULL values.");
+
+        p.add("Which of the following is NOT one of the ACID properties of database transactions?",
+              "Atomicity",
+              "Consistency",
+              "Availability",
+              "Durability",
+              "3",
+              "ACID stands for Atomicity, Consistency, Isolation, and Durability. Availability is part of the CAP theorem.");
+
+        p.add("Which SQL clause is used to filter records based on a specified condition?",
+              "ORDER BY",
+              "GROUP BY",
+              "WHERE",
+              "HAVING ONLY",
+              "3",
+              "The WHERE clause filters rows that satisfy specific search condition criteria before grouping or sorting.");
+
+        p.add("What type of constraint enforces referential integrity between two related tables?",
+              "Foreign Key constraint",
+              "Binary tree constraint",
+              "Unique index lock",
+              "File stream pointer",
+              "1",
+              "A Foreign Key enforces referential integrity by linking a record in a child table to a parent table's Primary Key.");
+
+        p.add("Which normal form eliminates partial functional dependencies on composite primary keys?",
+              "First Normal Form (1NF)",
+              "Second Normal Form (2NF)",
+              "Third Normal Form (3NF)",
+              "Boyce-Codd Normal Form (BCNF)",
+              "2",
+              "2NF ensures all non-key attributes are fully functionally dependent on the entire Primary Key, eliminating partial dependencies.");
+
+        p.add("Which SQL command belongs to the Data Definition Language (DDL) category?",
+              "INSERT",
+              "CREATE",
+              "UPDATE",
+              "DELETE",
+              "2",
+              "CREATE, ALTER, and DROP are DDL commands used to define and modify the schema structure of a database.");
+
+        p.add("Which JOIN returns all rows from the left table and matched rows from the right table?",
+              "INNER JOIN",
+              "LEFT JOIN",
+              "FULL JOIN",
+              "CROSS JOIN",
+              "2",
+              "A LEFT JOIN returns all records from the left table, with matching records from the right table, or NULL if there is no match.");
+
+        p.add("Which SQL command permanently removes a table along with its schema and data?",
+              "DELETE TABLE",
+              "DROP TABLE",
+              "REMOVE TABLE",
+              "TRUNCATE SCHEMA",
+              "2",
+              "DROP TABLE permanently deletes a table structure, data, constraints, and associated indexes.");
+
+        return p;
+    }
+
+    // 8. Core Java Programming & OOP Concepts (BCA)
+    private static SeedCoursePackage getJavaPackage() {
+        Course c = new Course(
+                "Core Java Programming & OOP Concepts",
+                "core-java-programming",
+                "BCA",
+                "Foundational Java programming covering JVM architecture, Object-Oriented Programming (OOP), Inheritance, Polymorphism, Collections, and Exception Handling.",
+                15, 10, 60, 1, CourseStatus.PUBLISHED
+        );
+        c.setSyllabus(List.of(
+                "JVM Architecture & Bytecode Execution",
+                "Object-Oriented Programming: Classes, Objects & Inheritance",
+                "Polymorphism, Interfaces & Abstract Classes",
+                "Exception Handling & Java Collections Framework"
+        ));
+
+        SeedCoursePackage p = new SeedCoursePackage(c);
+        p.add("What core architectural feature makes Java platform-independent?",
+              "Direct compilation to native assembly code",
+              "Compilation into Bytecode executed by the Java Virtual Machine (JVM)",
+              "Specialized hardware processors",
+              "Automatic direct pointer operations",
+              "2",
+              "Java code compiles into platform-neutral bytecode (.class) which executes on any system having a compatible JVM.");
+
+        p.add("Which OOP concept allows a subclass to provide a specific implementation of a method already declared in its superclass?",
+              "Method Overloading",
+              "Method Overriding",
+              "Data Encapsulation",
+              "Static Binding",
+              "2",
+              "Method Overriding allows a subclass to redefine the behavior of an inherited method at runtime.");
+
+        p.add("Which Java access modifier restricts member visibility exclusively to within its own declaring class?",
+              "public",
+              "protected",
+              "private",
+              "default",
+              "3",
+              "The private modifier hides members completely from all other classes, supporting strong encapsulation.");
+
+        p.add("Which keyword is used in Java to make a variable's value immutable or prevent a class from being inherited?",
+              "static",
+              "abstract",
+              "final",
+              "volatile",
+              "3",
+              "The final keyword makes variables constant, prevents method overriding, and prohibits class inheritance.");
+
+        p.add("What is the ultimate root superclass of every class in the Java language?",
+              "java.lang.Object",
+              "java.lang.Class",
+              "java.util.Collection",
+              "java.lang.System",
+              "1",
+              "Every Java class implicitly or explicitly extends java.lang.Object as its ultimate root superclass.");
+
+        p.add("Which Java collection class represents a resizable array implementation of the List interface?",
+              "LinkedList",
+              "ArrayList",
+              "HashSet",
+              "TreeSet",
+              "2",
+              "ArrayList provides a dynamically resizing array backed by standard arrays, offering fast O(1) random access.");
+
+        p.add("Which keyword is used in Java to explicitly throw an exception object?",
+              "throws",
+              "throw",
+              "try",
+              "catch",
+              "2",
+              "The throw keyword is used to explicitly instantiate and raise an exception object in Java program flow.");
+
+        p.add("Can an abstract class in Java declare constructor methods?",
+              "Yes, called when a concrete subclass instance is constructed",
+              "No, abstract classes cannot have constructors",
+              "Only if all methods inside are static",
+              "Only when implementing java.io.Serializable",
+              "1",
+              "Abstract classes can have constructors, which are called via super() during subclass instantiation.");
+
+        p.add("Which method must be called to start execution of a new Thread in Java?",
+              "run()",
+              "start()",
+              "execute()",
+              "init()",
+              "2",
+              "Calling start() creates a new native OS thread and invokes run() asynchronously on that separate thread.");
+
+        p.add("What is the primary role of Garbage Collection in Java?",
+              "Manually deallocating memory pointers via free()",
+              "Automatically reclaiming heap memory occupied by unreachable objects",
+              "Optimizing compiler loop performance",
+              "Clearing browser local storage",
+              "2",
+              "The Java Garbage Collector automatically frees memory occupied by objects that are no longer referenced.");
+
+        return p;
+    }
+
+    // 9. Data Structures & Algorithms (B.Tech)
+    private static SeedCoursePackage getDsaPackage() {
+        Course c = new Course(
+                "Data Structures & Algorithms (DSA)",
+                "data-structures-and-algorithms",
+                "B.Tech",
+                "Comprehensive algorithmic problem solving covering asymptotic analysis (Big-O), linear structures (stacks, queues, linked lists), trees, heaps, graphs, and sorting algorithms.",
+                15, 10, 60, 1, CourseStatus.PUBLISHED
+        );
+        c.setSyllabus(List.of(
+                "Asymptotic Notation & Time/Space Complexity",
+                "Linear Data Structures: Arrays, Linked Lists, Stacks & Queues",
+                "Non-Linear Structures: Binary Search Trees, Heaps & Graphs",
+                "Searching & Sorting Algorithms (Binary Search, Merge Sort, Quick Sort)"
+        ));
+
+        SeedCoursePackage p = new SeedCoursePackage(c);
+        p.add("What is the worst-case time complexity of searching an element in an unsorted array of size N?",
+              "O(1)",
+              "O(log N)",
+              "O(N)",
+              "O(N^2)",
+              "3",
+              "In an unsorted array, a linear search may need to examine all N elements in the worst case (O(N)).");
+
+        p.add("Which data structure operates strictly on a Last-In, First-Out (LIFO) basis?",
+              "Queue",
+              "Stack",
+              "Binary Search Tree",
+              "Priority Queue",
+              "2",
+              "A Stack enforces LIFO order: elements are pushed onto the top and popped from the top.");
+
+        p.add("What is the time complexity of Binary Search on a sorted array of size N?",
+              "O(N)",
+              "O(log N)",
+              "O(1)",
+              "O(N log N)",
+              "2",
+              "Binary Search halves the search space in each iteration, achieving O(log N) logarithmic time complexity.");
+
+        p.add("Which data structure consists of nodes where each node contains data and a pointer to the next node?",
+              "Static Array",
+              "Singly Linked List",
+              "Hash Table",
+              "Binary Heap",
+              "2",
+              "A Singly Linked List is a linear collection of data nodes linked together through sequential pointers.");
+
+        p.add("What is the average and worst-case time complexity of Merge Sort?",
+              "O(N^2)",
+              "O(N log N)",
+              "O(N)",
+              "O(log N)",
+              "2",
+              "Merge Sort is a stable divide-and-conquer algorithm with consistent O(N log N) complexity in best, average, and worst cases.");
+
+        p.add("Which tree traversal visits nodes in the order: Left Subtree, Root Node, Right Subtree?",
+              "Pre-order",
+              "In-order",
+              "Post-order",
+              "Level-order",
+              "2",
+              "In-order traversal visits Left -> Root -> Right, yielding sorted order in a Binary Search Tree (BST).");
+
+        p.add("Which data structure is most suitable for implementing Breadth-First Search (BFS) in a graph?",
+              "Stack",
+              "Queue",
+              "Trie",
+              "Disjoint Set",
+              "2",
+              "BFS explores graph vertices level by level, requiring a FIFO Queue to manage discovery order.");
+
+        p.add("What condition occurs when attempting to pop an element from an already empty stack?",
+              "Stack Overflow",
+              "Stack Underflow",
+              "Segmentation Fault",
+              "Deadlock",
+              "2",
+              "Stack Underflow occurs when an operation attempts to remove or peek at data from an empty stack.");
+
+        p.add("What is the average time complexity of key insertion and lookup in a Hash Table?",
+              "O(1)",
+              "O(log N)",
+              "O(N)",
+              "O(N log N)",
+              "1",
+              "With an effective hash function and reasonable load factor, hash table lookups and insertions operate in O(1) average time.");
+
+        p.add("In a Min-Heap binary tree, where is the minimum element guaranteed to reside?",
+              "At the leftmost leaf node",
+              "At the root node",
+              "At the rightmost leaf node",
+              "Randomly placed",
+              "2",
+              "In a Min-Heap, every parent node is less than or equal to its children, guaranteeing the smallest element is at the root.");
+
+        return p;
+    }
+
+    // 10. Introduction to Artificial Intelligence (B.Tech)
+    private static SeedCoursePackage getAiPackage() {
+        Course c = new Course(
+                "Introduction to Artificial Intelligence (AI)",
+                "introduction-to-artificial-intelligence",
+                "B.Tech",
+                "Foundational artificial intelligence concepts covering intelligent agents, search algorithms, heuristic methods, supervised & reinforcement learning, neural networks, and AI ethics.",
+                15, 10, 60, 1, CourseStatus.PUBLISHED
+        );
+        c.setSyllabus(List.of(
+                "Foundations of AI & Intelligent Agents",
+                "Search Strategies (BFS, DFS, A* Heuristic Search)",
+                "Knowledge Representation, Logic & Expert Systems",
+                "Introduction to Machine Learning, Neural Networks & NLP"
+        ));
+
+        SeedCoursePackage p = new SeedCoursePackage(c);
+        p.add("What is the primary definition of Artificial Intelligence (AI)?",
+              "Writing software exclusively for database backup automation",
+              "The simulation of human intelligence processes by machines and computer systems",
+              "Manufacturing hardware cables and motherboards",
+              "Creating high-speed optical internet connections",
+              "2",
+              "AI involves computational systems designed to simulate cognitive tasks such as reasoning, problem solving, and learning.");
+
+        p.add("What does the classic Turing Test evaluate?",
+              "The physical processing speed of computer transistors",
+              "A machine's ability to exhibit intelligent behavior indistinguishable from a human",
+              "The bandwidth capability of local area network routers",
+              "The memory capacity of cloud database servers",
+              "2",
+              "The Turing Test assesses whether a machine can generate conversational responses indistinguishable from a human.");
+
+        p.add("Which search algorithm uses heuristic evaluation functions to estimate the lowest cost to the goal?",
+              "Breadth-First Search (Uninformed)",
+              "Informed / Heuristic Search (such as A* Search)",
+              "Depth-First Search (Uninformed)",
+              "Linear Sequential Search",
+              "2",
+              "Informed search algorithms like A* utilize heuristic estimates h(n) to efficiently navigate toward goal states.");
+
+        p.add("In Machine Learning, which paradigm trains algorithms on labeled input-output training data?",
+              "Supervised Learning",
+              "Unsupervised Learning",
+              "Reinforcement Learning",
+              "Heuristic Mutation",
+              "1",
+              "Supervised learning trains models on labeled datasets to learn mapping functions that predict outcomes for new data.");
+
+        p.add("What defines an 'Agent' in Artificial Intelligence theory?",
+              "An entity that perceives its environment through sensors and acts upon it through actuators",
+              "A database administrator configuring table indexes",
+              "An antivirus background worker thread only",
+              "A printer spooler managing page print queues",
+              "1",
+              "An AI agent interacts with its surrounding environment by taking sensory inputs and executing actions via actuators.");
+
+        p.add("What does Natural Language Processing (NLP) focus on in AI?",
+              "Compiling C++ source code into binary instructions",
+              "Enabling computational systems to understand, interpret, and generate human language",
+              "Regulating electrical voltage in computer cooling fans",
+              "Formatting disk storage partitions",
+              "2",
+              "NLP focuses on computational linguistics, enabling software to process, understand, and generate human language.");
+
+        p.add("In an Artificial Neural Network, what is the role of an Activation Function?",
+              "To introduce non-linearity and decide if a neuron should fire",
+              "To switch on physical server power supplies",
+              "To format database migration tables",
+              "To execute operating system startup routines",
+              "1",
+              "Activation functions (e.g., ReLU, Sigmoid) introduce non-linear relationships that allow neural networks to learn complex patterns.");
+
+        p.add("Which machine learning approach learns by receiving rewards and penalties through environmental interactions?",
+              "Reinforcement Learning",
+              "Supervised Classification",
+              "Static Rule Deduction",
+              "SQL Query Indexing",
+              "1",
+              "Reinforcement learning trains agents to achieve optimal goals by rewarding desired actions and penalizing undesirable ones.");
+
+        p.add("What is 'Overfitting' in machine learning model training?",
+              "A model learning training data noise too closely, leading to poor generalization on new data",
+              "A model having zero mathematical weights in all layers",
+              "A computer system running out of hard drive space",
+              "A computer CPU overheating during training loops",
+              "1",
+              "Overfitting happens when a model learns training data noise and anomalies, reducing its accuracy on unseen real-world data.");
+
+        p.add("What is the primary objective of Computer Vision in AI systems?",
+              "Enabling computers to interpret, process, and understand visual information from digital images and videos",
+              "Increasing the monitor refresh rate for gaming",
+              "Physically cleaning digital camera sensor lenses",
+              "Installing graphics driver updates",
+              "1",
+              "Computer Vision enables machines to extract meaningful insights from digital imagery, video feeds, and spatial scans.");
+
+        return p;
+    }
+
+    // 11. Data Analytics & Business Intelligence (Computer Science & IT)
+    private static SeedCoursePackage getDataAnalyticsPackage() {
+        Course c = new Course(
+                "Data Analytics & Business Intelligence",
+                "data-analytics-business-intelligence",
+                "Computer Science & IT",
+                "Practical data analytics workflows covering exploratory data analysis (EDA), data cleaning, statistical measures, KPI dash-boarding, and Business Intelligence decision-making.",
+                15, 10, 60, 1, CourseStatus.PUBLISHED
+        );
+        c.setSyllabus(List.of(
+                "Data Analytics Lifecycle & Core Analytics Types",
+                "Data Cleaning, Preprocessing & Quality Assessment",
+                "Exploratory Data Analysis (EDA) & Statistical Metrics",
+                "Data Visualization, KPI Dashboards & Decision Support"
+        ));
+
+        SeedCoursePackage p = new SeedCoursePackage(c);
+        p.add("What is the primary objective of Data Analytics?",
+              "To inspect, clean, transform, and model data to discover actionable insights for decision-making",
+              "To assemble motherboard hardware components",
+              "To format physical hard drive storage sectors",
+              "To style website colors and typography",
+              "1",
+              "Data Analytics involves analyzing raw data to extract meaningful conclusions and guide strategic business choices.");
+
+        p.add("Which type of data analytics answers the question: 'What happened in the past?'",
+              "Descriptive Analytics",
+              "Predictive Analytics",
+              "Prescriptive Analytics",
+              "Cognitive Analytics",
+              "1",
+              "Descriptive analytics summarizes historical data to understand past trends and performance indicators.");
+
+        p.add("In statistics and data analytics, what does the 'Median' represent?",
+              "The sum of all values divided by the total count",
+              "The middle value that separates the higher half from the lower half of an ordered dataset",
+              "The most frequently occurring value in the dataset",
+              "The difference between maximum and minimum values",
+              "2",
+              "The Median is the middle number in a sorted dataset, resisting skew from extreme outliers.");
+
+        p.add("What does the acronym 'KPI' stand for in Business Intelligence?",
+              "Kernel Processing Index",
+              "Key Performance Indicator",
+              "Knowledge Protocol Interface",
+              "Key Protection Identity",
+              "2",
+              "A Key Performance Indicator (KPI) is a quantifiable metric used to measure progress toward strategic organizational goals.");
+
+        p.add("What is the primary goal of Data Cleaning (Data Cleansing)?",
+              "Deleting all records containing even integers",
+              "Identifying and rectifying errors, duplicates, and missing values in a dataset",
+              "Compressing text files into ZIP archives",
+              "Encrypting network file transfers",
+              "2",
+              "Data cleaning ensures datasets are accurate, complete, and consistent before conducting analysis or training models.");
+
+        p.add("Which chart type is best suited for tracking trends in continuous data over time?",
+              "Pie Chart",
+              "Line Chart",
+              "Scatter Plot",
+              "Tree Map",
+              "2",
+              "Line charts connect data points sequentially, making them ideal for displaying time-series trends and patterns.");
+
+        p.add("What is an 'Outlier' in a statistical distribution?",
+              "A data point that differs significantly from other observations in the dataset",
+              "A spreadsheet column header label",
+              "A primary key constraint in a relational database",
+              "A file format extension",
+              "1",
+              "An outlier is an observation point that lies an abnormal distance away from other values in a random sample.");
+
+        p.add("In Exploratory Data Analysis (EDA), what does 'Correlation' measure?",
+              "The direct causal link between two events",
+              "The strength and direction of a linear relationship between two variables",
+              "The execution speed of SQL database queries",
+              "The storage byte size of tabular CSV files",
+              "2",
+              "Correlation measures the linear relationship between two variables, ranging from -1 (inverse) to +1 (direct).");
+
+        p.add("What is an enterprise 'Data Warehouse'?",
+              "A centralized repository consolidating integrated data from multiple operational sources for reporting and analysis",
+              "A physical storage warehouse for decommissioned computers",
+              "A temporary USB backup drive",
+              "A local browser cache storage location",
+              "1",
+              "A Data Warehouse aggregates data from diverse operational systems into a unified schema for business intelligence.");
+
+        p.add("Which popular Python library is primarily used for tabular data manipulation and DataFrame analysis?",
+              "Pandas",
+              "Pygame",
+              "Flask",
+              "Tkinter",
+              "1",
+              "Pandas provides high-performance data structures (such as DataFrame and Series) for data wrangling and statistical operations.");
+
+        return p;
+    }
+
+    // 12. C Programming & Problem Solving (BCA)
+    private static SeedCoursePackage getCProgrammingPackage() {
+        Course c = new Course(
+                "C Programming & Problem Solving",
+                "c-programming-fundamentals",
+                "BCA",
+                "Core procedural programming in C covering syntax, data types, control structures, functions, arrays, pointers, dynamic memory allocation, and file handling.",
+                15, 10, 60, 1, CourseStatus.PUBLISHED
+        );
+        c.setSyllabus(List.of(
+                "C Language Fundamentals, Data Types & Operators",
+                "Control Structures: Conditionals, Loops & Functions",
+                "Pointers, Memory Addresses & Pointer Arithmetic",
+                "Arrays, Strings & Dynamic Memory Allocation (malloc, free)"
+        ));
+
+        SeedCoursePackage p = new SeedCoursePackage(c);
+        p.add("Who is credited with creating the C programming language?",
+              "Bjarne Stroustrup",
+              "Dennis Ritchie",
+              "James Gosling",
+              "Guido van Rossum",
+              "2",
+              "Dennis Ritchie developed the C programming language at Bell Laboratories between 1972 and 1973.");
+
+        p.add("Which format specifier is used in printf() to print a decimal integer in C?",
+              "%f",
+              "%d",
+              "%c",
+              "%s",
+              "2",
+              "%d (or %i) is the standard format specifier used to print signed decimal integers in C.");
+
+        p.add("What is a 'Pointer' in C?",
+              "A function that terminates program execution",
+              "A variable that stores the memory address of another variable",
+              "A compiler warning flag",
+              "A loop control statement",
+              "2",
+              "A pointer is a variable that stores the physical or virtual memory address where another value is located.");
+
+        p.add("Which standard library function dynamically allocates memory on the heap in C?",
+              "alloc()",
+              "malloc()",
+              "new()",
+              "create()",
+              "2",
+              "malloc() (Memory Allocation) allocates a specified number of bytes on the heap and returns a void pointer to the allocated memory.");
+
+        p.add("What is the index of the first element in any standard C array?",
+              "-1",
+              "0",
+              "1",
+              "Determined by compiler configuration",
+              "2",
+              "C arrays are strictly 0-indexed; the initial element is positioned at index 0.");
+
+        p.add("Which operator is used to obtain the memory address of an existing variable in C?",
+              "* (Asterisk)",
+              "& (Ampersand)",
+              "-> (Arrow)",
+              ". (Dot)",
+              "2",
+              "The address-of operator (&) evaluates to the memory address of its operand variable.");
+
+        p.add("What character indicates the end of a string in C?",
+              "'\\n' (Newline)",
+              "'\\0' (Null character)",
+              "'\\t' (Tab)",
+              "'EOF' (End of file)",
+              "2",
+              "Strings in C are character arrays terminated by the null character byte '\\0'.");
+
+        p.add("Which loop in C is guaranteed to execute its body at least once?",
+              "for loop",
+              "while loop",
+              "do-while loop",
+              "foreach loop",
+              "3",
+              "A do-while loop evaluates its exit condition at the bottom, guaranteeing at least one execution pass.");
+
+        p.add("Which function must be called to release dynamically allocated memory in C?",
+              "delete()",
+              "remove()",
+              "free()",
+              "clear()",
+              "3",
+              "free() releases heap memory previously allocated by malloc() or calloc(), preventing memory leaks.");
+
+        p.add("What is the standard return type of the main() function in ANSI C?",
+              "void",
+              "int",
+              "char",
+              "float",
+              "2",
+              "In standard C, main() returns an int representing the program's exit status code to the operating system.");
 
         return p;
     }

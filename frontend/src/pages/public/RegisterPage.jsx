@@ -119,11 +119,11 @@ const RegisterPage = () => {
                   onChange={(e) => setAcademicBranch(e.target.value)}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-teal-500 focus:bg-white transition appearance-none cursor-pointer"
                 >
-                  <option value="B.Tech">B.Tech — Cyber Job Simulation &amp; Cloud Systems</option>
-                  <option value="BCA">BCA — Python for Data Science &amp; Machine Learning</option>
+                  <option value="B.Tech">B.Tech — Cyber Security, DSA, AI &amp; Cloud Systems</option>
+                  <option value="BCA">BCA — Web Dev, DBMS, Java, C, Python &amp; Data Science</option>
                   <option value="BBA">BBA — Business Analytics &amp; Strategic Growth</option>
                   <option value="B.Com">B.Com — Financial Analytics &amp; Corporate Valuation</option>
-                  <option value="Computer Science & IT">Computer Science &amp; IT — DevOps &amp; Cloud Infrastructure</option>
+                  <option value="Computer Science & IT">Computer Science &amp; IT — Data Analytics, DevOps &amp; Cloud</option>
                 </select>
                 <GraduationCap className="absolute left-3.5 top-3.5 h-4 w-4 text-slate-400 pointer-events-none" />
               </div>
