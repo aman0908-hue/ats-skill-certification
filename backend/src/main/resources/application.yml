@@ -1,0 +1,40 @@
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  application:
+    name: ats-skill-certification-backend
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb+srv://satyamydv8230_db_user:Aman9080@cluster0.eduh5gu.mongodb.net/ats_skill_certification?retryWrites=true&w=majority&appName=Cluster0}
+      database: ${MONGODB_DATABASE:ats_skill_certification}
+      auto-index-creation: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:atsSkillCertificationSuperSecretKeyMustBeAtLeast256BitsLongForHmacSha256Security2026!}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000} # 24 Hours
+    refresh-expiration-ms: ${JWT_REFRESH_EXPIRATION_MS:604800000} # 7 Days
+  cors:
+    allowed-origins: ${FRONTEND_URL:http://localhost:5173}
+  public-url: ${PUBLIC_APP_URL:http://localhost:5173}
+  admin:
+    email: ${ADMIN_EMAIL:admin@atsskill.com}
+    password: ${ADMIN_PASSWORD:Admin@ATS2026}
+    name: ${ADMIN_NAME:ATS System Administrator}
+  certificates:
+    storage-path: ${CERT_STORAGE_PATH:certificates}
+    template-asset-path: ${CERT_TEMPLATE_PATH:templates/certificate-template.png}
+
+logging:
+  level:
+    root: INFO
+    com.atsskill: DEBUG
+    org.springframework.data.mongodb: INFO
