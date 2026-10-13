@@ -13,9 +13,9 @@
 
 ## 2. MongoDB Atlas Configuration
 
-Your connection URI:
+Your connection URI (Example format):
 ```
-mongodb+srv://satyamydv8230_db_user:Aman9080@cluster0.eduh5gu.mongodb.net/ats_skill_certification?retryWrites=true&w=majority&appName=Cluster0
+mongodb+srv://<username>:<password>@cluster0.mongodb.net/ats_skill_certification?retryWrites=true&w=majority
 ```
 
 ### Important Network Access Step in MongoDB Atlas:
@@ -23,7 +23,7 @@ If you see the error:
 `MongoServerSelectionError: ... Please ensure that your Network Access List allows connections from your IP`
 
 Follow these 3 quick steps in your MongoDB Atlas Dashboard:
-1. Go to [cloud.mongodb.com](https://cloud.mongodb.com) and select your cluster (`Cluster0`).
+1. Go to [cloud.mongodb.com](https://cloud.mongodb.com) and select your cluster.
 2. In the left sidebar, click **Security > Network Access**.
 3. Click **Add IP Address** and choose **"Allow Access From Anywhere" (`0.0.0.0/0`)** (or click **"Add Current IP Address"**). Click **Confirm**.
 
@@ -53,10 +53,8 @@ The frontend starts at `http://localhost:5173`.
 ## 4. Default Login Credentials
 
 ### Administrator Credentials:
-- **Email**: `admin@atsskill.com`
-- **Password**: `Admin@ATS2026`
+- Configure your admin email and password in your private `.env` file or environment variables (`ADMIN_EMAIL`, `ADMIN_PASSWORD`).
 - **Role**: `ADMIN`
-- *Tip: On the `/login` page, you can click **"Fill & Login as Admin"** for 1-click login.*
 
 ### Student Registration:
 - Students can register on the `/register` page with their full legal name.

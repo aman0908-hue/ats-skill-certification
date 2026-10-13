@@ -22,8 +22,8 @@ Authenticates a user (Student or Admin).
 - **Request Body**:
   ```json
   {
-    "email": "admin@atsskill.com",
-    "password": "Admin@ATS2026"
+    "email": "user@example.com",
+    "password": "your_secure_password"
   }
   ```
 

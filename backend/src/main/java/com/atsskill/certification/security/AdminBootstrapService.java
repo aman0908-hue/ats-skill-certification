@@ -26,10 +26,10 @@ public class AdminBootstrapService implements CommandLineRunner {
     private final CertificateTemplateRepository templateRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @Value("${app.admin.email:admin@atsskill.com}")
+    @Value("${app.admin.email:}")
     private String adminEmail;
 
-    @Value("${app.admin.password:Admin@ATS2026}")
+    @Value("${app.admin.password:}")
     private String adminPassword;
 
     @Value("${app.admin.name:ATS Administrator}")
@@ -70,9 +70,13 @@ public class AdminBootstrapService implements CommandLineRunner {
     }
 
     private void bootstrapAdminUser() {
+        if (adminEmail == null || adminEmail.isBlank() || adminPassword == null || adminPassword.isBlank()) {
+            logger.info("Admin bootstrap skipped: no admin email or password configured in environment");
+            return;
+        }
         if (!userRepository.existsByEmail(adminEmail.toLowerCase().trim())) {
             User admin = new User(
-                    adminName,
+                    adminName != null && !adminName.isBlank() ? adminName : "ATS Administrator",
                     adminEmail.toLowerCase().trim(),
                     passwordEncoder.encode(adminPassword),
                     Role.ADMIN
