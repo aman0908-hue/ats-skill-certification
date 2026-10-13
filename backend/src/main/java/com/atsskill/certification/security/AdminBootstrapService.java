@@ -114,6 +114,7 @@ public class AdminBootstrapService implements CommandLineRunner {
                 course.setDurationMinutes(pkg.course.getDurationMinutes());
                 course.setQuestionCount(pkg.course.getQuestionCount());
                 course.setPassingPercentage(pkg.course.getPassingPercentage());
+                course.setStatus(CourseStatus.PUBLISHED);
                 course = courseRepository.save(course);
             }
 

@@ -30,3 +30,5 @@ frontend/.vercel/
 .settings/
 .project
 .classpath
+.vercel
+.env*

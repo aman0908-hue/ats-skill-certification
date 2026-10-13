@@ -181,7 +181,7 @@ public class CertificateService {
                 "preview_token_123456",
                 "preview_hash",
                 "mock_student_id",
-                "Aman Kumar Yadav",
+                "Candidate Name",
                 "mock_course_id",
                 "B.Tech: Core Computer Science & Algorithms",
                 Instant.now(),
@@ -190,11 +190,19 @@ public class CertificateService {
         return renderPdf(mockCert, template);
     }
 
+    private String getSanitizedPublicUrl() {
+        if (publicBaseUrl == null || publicBaseUrl.isBlank() ||
+            publicBaseUrl.contains("localhost") ||
+            publicBaseUrl.contains("gamma") ||
+            publicBaseUrl.contains("jet")) {
+            return "https://ats-skill-certification.vercel.app";
+        }
+        return publicBaseUrl.trim().replaceAll("/+$", "");
+    }
+
     private byte[] renderPdf(Certificate cert, CertificateTemplate template) {
         try {
-            String baseUrl = (publicBaseUrl != null && !publicBaseUrl.isBlank() && !publicBaseUrl.contains("localhost"))
-                    ? publicBaseUrl.trim().replaceAll("/+$", "")
-                    : "https://ats-skill-certification.vercel.app";
+            String baseUrl = getSanitizedPublicUrl();
             String verificationUrl = baseUrl + "/verify/" + cert.getVerificationToken();
             String qrBase64 = qrCodeService.generateQrCodeBase64(verificationUrl, 260, 260);
             String formattedDate = DATE_FORMATTER.format(cert.getIssueDate());

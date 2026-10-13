@@ -84,7 +84,7 @@ const RegisterPage = () => {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   required
-                  placeholder="Aman Kumar Yadav"
+                  placeholder="Enter your full name"
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:bg-white transition"
                 />
                 <User className="absolute left-3.5 top-3.5 h-4 w-4 text-slate-400" />

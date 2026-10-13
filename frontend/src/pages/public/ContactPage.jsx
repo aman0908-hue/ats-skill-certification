@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, ExternalLink, MapPin, Send, CheckCircle2 } from 'lucide-react';
 
 const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -47,10 +47,6 @@ const ContactPage = () => {
                   <Mail className="h-4 w-4 text-teal-400 shrink-0" />
                   <span>support@amantechsolutions.in</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <Phone className="h-4 w-4 text-teal-400 shrink-0" />
-                  <span>+91 98765 43210</span>
-                </div>
               </div>
             </div>
 
@@ -76,7 +72,7 @@ const ContactPage = () => {
                   <input
                     type="text"
                     required
-                    placeholder="Aman Kumar"
+                    placeholder="Your Name"
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-teal-500"
                   />
                 </div>

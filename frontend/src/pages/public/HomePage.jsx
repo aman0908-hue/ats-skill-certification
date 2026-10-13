@@ -14,7 +14,8 @@ import {
   Layers,
   ChevronRight,
   HelpCircle,
-  FileCheck
+  FileCheck,
+  ExternalLink
 } from 'lucide-react';
 
 const HomePage = () => {
@@ -127,8 +128,8 @@ const HomePage = () => {
             </div>
 
             {/* Quick QR Lookup Card */}
-            <div className="lg:col-span-5">
-              <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-7 shadow-2xl backdrop-blur-xl relative">
+            <div className="lg:col-span-5 w-full">
+              <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-7 shadow-2xl backdrop-blur-xl relative w-full">
                 <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-extrabold text-[11px] px-3 py-1 rounded-full uppercase tracking-wider shadow">
                   Instant Verification
                 </div>
@@ -171,8 +172,26 @@ const HomePage = () => {
                 </form>
 
                 <div className="mt-6 pt-5 border-t border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
-                  <span>Powered by AmanTech Engine</span>
-                  <span className="text-teal-400 font-medium">Public Records Portal</span>
+                  <a 
+                    href="https://amantechsolutionss.netlify.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 hover:text-teal-300 transition flex items-center space-x-1.5 group"
+                    title="AmanTech Solutions"
+                  >
+                    <span>Powered by</span>
+                    <span className="font-semibold text-teal-400 group-hover:underline">AmanTech Solutions</span>
+                    <ExternalLink className="h-3 w-3 text-teal-400" />
+                  </a>
+                  <a
+                    href="https://amantechsolutionss.netlify.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-teal-400 hover:text-teal-300 font-medium hover:underline flex items-center space-x-1"
+                  >
+                    <span>Official Portal</span>
+                    <ExternalLink className="h-2.5 w-2.5" />
+                  </a>
                 </div>
               </div>
             </div>

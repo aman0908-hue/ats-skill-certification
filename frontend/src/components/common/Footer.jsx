@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Award, QrCode, Mail, Phone, MapPin, CheckCircle, ExternalLink } from 'lucide-react';
+import { Award, QrCode, Mail, MapPin, CheckCircle, ExternalLink } from 'lucide-react';
 
 const Footer = () => {
   return (
     <footer className="bg-slate-950 text-slate-400 border-t border-slate-800/80 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
           
           {/* Company & Brand Column */}
           <div className="lg:col-span-2 space-y-4">
@@ -34,40 +34,6 @@ const Footer = () => {
               <CheckCircle className="h-4 w-4 text-teal-400 shrink-0" />
               <span>Standardized MCQ evaluation with cryptographically secure QR validation.</span>
             </div>
-          </div>
-
-          {/* Academic Categories (NO MCA as per requirement) */}
-          <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
-              Certification Tracks
-            </h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link to="/courses?category=B.Tech" className="hover:text-teal-400 transition">
-                  B.Tech Engineering
-                </Link>
-              </li>
-              <li>
-                <Link to="/courses?category=BCA" className="hover:text-teal-400 transition">
-                  BCA Computer Applications
-                </Link>
-              </li>
-              <li>
-                <Link to="/courses?category=BBA" className="hover:text-teal-400 transition">
-                  BBA Business Analytics
-                </Link>
-              </li>
-              <li>
-                <Link to="/courses?category=B.Com" className="hover:text-teal-400 transition">
-                  B.Com Financial Accounting
-                </Link>
-              </li>
-              <li>
-                <Link to="/courses?category=Computer+Science" className="hover:text-teal-400 transition">
-                  Cloud &amp; Database Systems
-                </Link>
-              </li>
-            </ul>
           </div>
 
           {/* Quick Links */}
@@ -119,10 +85,6 @@ const Footer = () => {
                 <Mail className="h-4 w-4 text-teal-400 shrink-0" />
                 <span>support@amantechsolutions.in</span>
               </div>
-              <div className="flex items-center space-x-2.5">
-                <Phone className="h-4 w-4 text-teal-400 shrink-0" />
-                <span>+91 98765 43210</span>
-              </div>
             </div>
           </div>
 
@@ -137,10 +99,16 @@ const Footer = () => {
           {/* User Requested: "last me develod by compney ka name ok" */}
           <div className="flex items-center space-x-2 text-slate-400 bg-slate-900 px-4 py-2 rounded-full border border-slate-800">
             <span>Developed by</span>
-            <span className="font-bold text-white tracking-wide flex items-center space-x-1.5">
+            <a 
+              href="https://amantechsolutionss.netlify.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-white tracking-wide flex items-center space-x-1.5 hover:text-teal-400 transition"
+            >
               <img src="/logo.png" alt="AmanTech" className="h-4 w-4 rounded-full inline" />
               <span className="text-teal-400">AmanTech Solutions</span>
-            </span>
+              <ExternalLink className="h-3 w-3 text-slate-400" />
+            </a>
             <span className="hidden sm:inline text-slate-600">|</span>
             <span className="hidden sm:inline text-slate-400 text-[11px]">Transforming Ideas into Digital Reality</span>
           </div>
