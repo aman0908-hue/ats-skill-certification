@@ -33,7 +33,14 @@ const RegisterPage = () => {
       await register(fullName, email, password, confirmPassword, academicBranch);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed. Please check inputs.');
+      if (err.response?.status === 502 || err.response?.status === 503 || !err.response) {
+        setError('Backend server is booting up or connecting to database. Please try again in 1 minute.');
+      } else if (err.response?.data?.data && typeof err.response.data.data === 'object') {
+        const firstMsg = Object.values(err.response.data.data)[0];
+        setError(firstMsg || err.response.data.message || 'Registration failed. Please check inputs.');
+      } else {
+        setError(err.response?.data?.message || 'Registration failed. Please check inputs.');
+      }
     } finally {
       setLoading(false);
     }

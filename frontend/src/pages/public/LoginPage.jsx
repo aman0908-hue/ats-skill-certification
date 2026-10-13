@@ -28,7 +28,11 @@ const LoginPage = () => {
         navigate(from);
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Invalid email or password');
+      if (err.response?.status === 502 || err.response?.status === 503 || !err.response) {
+        setError('Backend server is booting up or connecting to database. Please wait a moment.');
+      } else {
+        setError(err.response?.data?.message || 'Invalid email or password');
+      }
     } finally {
       setLoading(false);
     }
