@@ -50,9 +50,23 @@ public class AdminBootstrapService implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        bootstrapAdminUser();
-        bootstrapCertificateTemplate();
-        bootstrapSampleCoursesAndQuestions();
+        try {
+            bootstrapAdminUser();
+        } catch (Exception e) {
+            logger.error("Failed to bootstrap admin user: {}", e.getMessage(), e);
+        }
+
+        try {
+            bootstrapCertificateTemplate();
+        } catch (Exception e) {
+            logger.error("Failed to bootstrap certificate template: {}", e.getMessage(), e);
+        }
+
+        try {
+            bootstrapSampleCoursesAndQuestions();
+        } catch (Exception e) {
+            logger.error("Failed to bootstrap sample courses and questions: {}", e.getMessage(), e);
+        }
     }
 
     private void bootstrapAdminUser() {
@@ -99,33 +113,37 @@ public class AdminBootstrapService implements CommandLineRunner {
         logger.info(">>> Verifying and seeding domain specialization courses (Cyber Job Simulation, Python Data Science, DevOps, etc.)...");
 
         for (CourseSeedData.SeedCoursePackage pkg : CourseSeedData.getSeedPackages()) {
-            Optional<Course> existingOpt = courseRepository.findBySlug(pkg.course.getSlug());
-            Course course;
-            if (existingOpt.isEmpty()) {
-                course = courseRepository.save(pkg.course);
-                logger.info(">>> Seeded industry certification course: {} (Duration: {} mins, Questions: {})",
-                        course.getTitle(), course.getDurationMinutes(), course.getQuestionCount());
-            } else {
-                course = existingOpt.get();
-                course.setTitle(pkg.course.getTitle());
-                course.setCategory(pkg.course.getCategory());
-                course.setDescription(pkg.course.getDescription());
-                course.setSyllabus(pkg.course.getSyllabus());
-                course.setDurationMinutes(pkg.course.getDurationMinutes());
-                course.setQuestionCount(pkg.course.getQuestionCount());
-                course.setPassingPercentage(pkg.course.getPassingPercentage());
-                course.setStatus(CourseStatus.PUBLISHED);
-                course = courseRepository.save(course);
-            }
-
-            long currentQCount = questionRepository.countByCourseId(course.getId());
-            if (currentQCount < pkg.course.getQuestionCount()) {
-                for (Question q : pkg.questions) {
-                    q.setCourseId(course.getId());
-                    q.setCreatedAt(Instant.now());
+            try {
+                Optional<Course> existingOpt = courseRepository.findBySlug(pkg.course.getSlug());
+                Course course;
+                if (existingOpt.isEmpty()) {
+                    course = courseRepository.save(pkg.course);
+                    logger.info(">>> Seeded industry certification course: {} (Duration: {} mins, Questions: {})",
+                            course.getTitle(), course.getDurationMinutes(), course.getQuestionCount());
+                } else {
+                    course = existingOpt.get();
+                    course.setTitle(pkg.course.getTitle());
+                    course.setCategory(pkg.course.getCategory());
+                    course.setDescription(pkg.course.getDescription());
+                    course.setSyllabus(pkg.course.getSyllabus());
+                    course.setDurationMinutes(pkg.course.getDurationMinutes());
+                    course.setQuestionCount(pkg.course.getQuestionCount());
+                    course.setPassingPercentage(pkg.course.getPassingPercentage());
+                    course.setStatus(CourseStatus.PUBLISHED);
+                    course = courseRepository.save(course);
                 }
-                questionRepository.saveAll(pkg.questions);
-                logger.info(">>> Seeded {} MCQs for course: {}", pkg.questions.size(), course.getTitle());
+
+                long currentQCount = questionRepository.countByCourseId(course.getId());
+                if (currentQCount < pkg.course.getQuestionCount()) {
+                    for (Question q : pkg.questions) {
+                        q.setCourseId(course.getId());
+                        q.setCreatedAt(Instant.now());
+                    }
+                    questionRepository.saveAll(pkg.questions);
+                    logger.info(">>> Seeded {} MCQs for course: {}", pkg.questions.size(), course.getTitle());
+                }
+            } catch (Exception e) {
+                logger.warn("Skipping course package {} due to error: {}", pkg.course.getSlug(), e.getMessage());
             }
         }
     }
