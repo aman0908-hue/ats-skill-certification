@@ -23,8 +23,8 @@ app:
     expiration-ms: ${JWT_EXPIRATION_MS:86400000} # 24 Hours
     refresh-expiration-ms: ${JWT_REFRESH_EXPIRATION_MS:604800000} # 7 Days
   cors:
-    allowed-origins: ${FRONTEND_URL:http://localhost:5173}
-  public-url: ${PUBLIC_APP_URL:http://localhost:5173}
+    allowed-origins: ${FRONTEND_URL:https://ats-skill-certification.vercel.app,http://localhost:5173}
+  public-url: ${PUBLIC_APP_URL:https://ats-skill-certification.vercel.app}
   admin:
     email: ${ADMIN_EMAIL:admin@atsskill.com}
     password: ${ADMIN_PASSWORD:Admin@ATS2026}

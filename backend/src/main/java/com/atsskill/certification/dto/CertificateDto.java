@@ -36,8 +36,10 @@ public class CertificateDto {
         dto.scorePercentage = cert.getScorePercentage();
         dto.status = cert.getStatus();
         dto.revocationReason = cert.getRevocationReason();
-        dto.revokedAt = cert.getRevokedAt();
-        dto.verificationUrl = publicBaseUrl + "/verify/" + cert.getVerificationToken();
+        String effectiveUrl = (publicBaseUrl != null && !publicBaseUrl.isBlank() && !publicBaseUrl.contains("localhost"))
+                ? publicBaseUrl.trim().replaceAll("/+$", "")
+                : "https://ats-skill-certification.vercel.app";
+        dto.verificationUrl = effectiveUrl + "/verify/" + cert.getVerificationToken();
         return dto;
     }
 

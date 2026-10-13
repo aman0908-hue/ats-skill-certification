@@ -40,7 +40,7 @@ public class CertificateService {
     private final QrCodeService qrCodeService;
     private final AuditLogService auditLogService;
 
-    @Value("${app.public-url:http://localhost:5173}")
+    @Value("${app.public-url:https://ats-skill-certification.vercel.app}")
     private String publicBaseUrl;
 
     private static final String HEX_CHARS = "0123456789ABCDEF";
@@ -117,12 +117,27 @@ public class CertificateService {
         }
 
         String trimmed = token.trim();
-        String hashed = hashToken(trimmed);
+        // If a full verification URL or path was passed/scanned, extract the token/ID part
+        if (trimmed.contains("/verify/")) {
+            trimmed = trimmed.substring(trimmed.lastIndexOf("/verify/") + 8).trim();
+        } else if (trimmed.contains("/")) {
+            trimmed = trimmed.substring(trimmed.lastIndexOf('/') + 1).trim();
+        }
+        // Remove trailing query params or hashes if present
+        if (trimmed.contains("?")) {
+            trimmed = trimmed.substring(0, trimmed.indexOf('?')).trim();
+        }
+        if (trimmed.contains("#")) {
+            trimmed = trimmed.substring(0, trimmed.indexOf('#')).trim();
+        }
+
+        final String searchToken = trimmed;
+        final String hashed = hashToken(searchToken);
 
         // Lookup by token or token hash or certificate number
-        Optional<Certificate> certOpt = certificateRepository.findByVerificationToken(trimmed)
+        Optional<Certificate> certOpt = certificateRepository.findByVerificationToken(searchToken)
                 .or(() -> certificateRepository.findByVerificationTokenHash(hashed))
-                .or(() -> certificateRepository.findByCertificateNumber(trimmed));
+                .or(() -> certificateRepository.findByCertificateNumber(searchToken));
 
         if (certOpt.isEmpty()) {
             return PublicVerificationDto.invalid("Certificate not found. The token may be invalid or tampered with.");
@@ -177,7 +192,9 @@ public class CertificateService {
 
     private byte[] renderPdf(Certificate cert, CertificateTemplate template) {
         try {
-            String baseUrl = (publicBaseUrl != null && !publicBaseUrl.isBlank()) ? publicBaseUrl : "http://localhost:5173";
+            String baseUrl = (publicBaseUrl != null && !publicBaseUrl.isBlank() && !publicBaseUrl.contains("localhost"))
+                    ? publicBaseUrl.trim().replaceAll("/+$", "")
+                    : "https://ats-skill-certification.vercel.app";
             String verificationUrl = baseUrl + "/verify/" + cert.getVerificationToken();
             String qrBase64 = qrCodeService.generateQrCodeBase64(verificationUrl, 260, 260);
             String formattedDate = DATE_FORMATTER.format(cert.getIssueDate());

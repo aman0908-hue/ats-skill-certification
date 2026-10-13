@@ -25,20 +25,35 @@ const VerificationPage = () => {
   const [searched, setSearched] = useState(false);
   const [error, setError] = useState(null);
 
+  const cleanInput = (raw) => {
+    let s = (raw || '').trim();
+    if (s.includes('/verify/')) {
+      s = s.substring(s.lastIndexOf('/verify/') + 8).trim();
+    } else if (s.includes('/')) {
+      s = s.substring(s.lastIndexOf('/') + 1).trim();
+    }
+    if (s.includes('?')) s = s.substring(0, s.indexOf('?')).trim();
+    if (s.includes('#')) s = s.substring(0, s.indexOf('#')).trim();
+    return s;
+  };
+
   useEffect(() => {
     if (token) {
-      performVerification(token);
+      const cleaned = cleanInput(token);
+      setInputToken(cleaned);
+      performVerification(cleaned);
     }
   }, [token]);
 
   const performVerification = async (verifyToken) => {
-    if (!verifyToken.trim()) return;
+    const cleaned = cleanInput(verifyToken);
+    if (!cleaned) return;
     setLoading(true);
     setError(null);
     setSearched(true);
 
     try {
-      const res = await certificatesApi.verifyPublic(verifyToken.trim());
+      const res = await certificatesApi.verifyPublic(cleaned);
       if (res.data?.data) {
         setVerificationData(res.data.data);
       }
@@ -52,8 +67,10 @@ const VerificationPage = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    if (inputToken.trim()) {
-      navigate(`/verify/${inputToken.trim()}`);
+    const cleaned = cleanInput(inputToken);
+    if (cleaned) {
+      navigate(`/verify/${cleaned}`);
+      performVerification(cleaned);
     }
   };
 

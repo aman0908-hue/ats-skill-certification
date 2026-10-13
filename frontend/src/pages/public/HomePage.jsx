@@ -49,8 +49,16 @@ const HomePage = () => {
 
   const handleQuickVerify = (e) => {
     e.preventDefault();
-    if (quickVerifyToken.trim()) {
-      navigate(`/verify/${quickVerifyToken.trim()}`);
+    let s = (quickVerifyToken || '').trim();
+    if (s.includes('/verify/')) {
+      s = s.substring(s.lastIndexOf('/verify/') + 8).trim();
+    } else if (s.includes('/')) {
+      s = s.substring(s.lastIndexOf('/') + 1).trim();
+    }
+    if (s.includes('?')) s = s.substring(0, s.indexOf('?')).trim();
+    if (s.includes('#')) s = s.substring(0, s.indexOf('#')).trim();
+    if (s) {
+      navigate(`/verify/${s}`);
     }
   };
 
