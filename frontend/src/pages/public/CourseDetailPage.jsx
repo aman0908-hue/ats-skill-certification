@@ -14,6 +14,7 @@ import {
   FileText,
   Lock
 } from 'lucide-react';
+import { useSEO } from '../../hooks/useSEO';
 
 const CourseDetailPage = () => {
   const { idOrSlug } = useParams();
@@ -24,6 +25,12 @@ const CourseDetailPage = () => {
   const [eligibility, setEligibility] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  useSEO({
+    title: course ? `${course.title} (${course.category}) Certification Exam` : 'Course Details',
+    description: course ? course.description : 'Official industry certification examination syllabus and requirements.',
+    canonicalPath: `/courses/${idOrSlug}`
+  });
 
   useEffect(() => {
     const fetchCourseAndEligibility = async () => {

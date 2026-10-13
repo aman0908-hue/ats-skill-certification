@@ -1,7 +1,14 @@
 import React from 'react';
 import { Award, ShieldCheck, CheckCircle, GraduationCap, Building2 } from 'lucide-react';
+import { useSEO } from '../../hooks/useSEO';
 
 const AboutPage = () => {
+  useSEO({
+    title: 'About Us — Aman Tech Solutions Skill Certification',
+    description: 'Learn about ATS Skill Certification by Aman Tech Solutions. Standardizing academic evaluation, verified skill badges, and tamper-proof digital credentials for college students.',
+    canonicalPath: '/about'
+  });
+
   return (
     <div className="bg-slate-50 min-h-screen py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">

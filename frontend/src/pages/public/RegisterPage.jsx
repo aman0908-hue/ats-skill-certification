@@ -2,8 +2,15 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { User, Mail, Lock, ArrowRight, AlertCircle, CheckCircle, GraduationCap } from 'lucide-react';
+import { useSEO } from '../../hooks/useSEO';
 
 const RegisterPage = () => {
+  useSEO({
+    title: 'Candidate Registration — Create Free ATS Certification Account',
+    description: 'Sign up for free to access verified certification exams for B.Tech, BCA, BBA, B.Com, and CS/IT tracks. Earn digital credentials with instant QR verification.',
+    canonicalPath: '/register'
+  });
+
   const { register } = useAuth();
   const navigate = useNavigate();
 

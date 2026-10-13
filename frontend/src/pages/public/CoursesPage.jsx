@@ -3,8 +3,15 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { coursesApi } from '../../services/api';
 import { BookOpen, Clock, Layers, CheckCircle, Search, ArrowRight, Filter, Sparkles, GraduationCap } from 'lucide-react';
+import { useSEO } from '../../hooks/useSEO';
 
 const CoursesPage = () => {
+  useSEO({
+    title: 'Explore All Certification Tracks — B.Tech, BCA, BBA, B.Com',
+    description: 'Browse all domain-specific certification exams across engineering, computer applications, management, and commerce. Get certified with verifiable digital certificates.',
+    canonicalPath: '/courses'
+  });
+
   const { user } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = searchParams.get('category') || user?.academicBranch || 'B.Tech';

@@ -14,10 +14,17 @@ import {
   Lock,
   ArrowRight
 } from 'lucide-react';
+import { useSEO } from '../../hooks/useSEO';
 
 const VerificationPage = () => {
   const { token } = useParams();
   const navigate = useNavigate();
+
+  useSEO({
+    title: token ? `Verify Certificate (${token}) — Instant QR Credential Verification` : 'Certificate Verification — Verify Official ATS Credentials',
+    description: 'Verify digital skill certification credentials issued by Aman Tech Solutions. Instant tamper-proof cryptographic validation with student name, track, and score.',
+    canonicalPath: token ? `/verify/${token}` : '/verify'
+  });
 
   const [inputToken, setInputToken] = useState(token || '');
   const [verificationData, setVerificationData] = useState(null);

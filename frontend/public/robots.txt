@@ -1,0 +1,24 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Allow: /courses
+Allow: /courses/*
+Allow: /verify
+Allow: /verify/*
+Allow: /about
+Allow: /contact
+Allow: /login
+Allow: /register
+
+# Disallow authenticated private dashboards and quiz attempts
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /student
+Disallow: /student/*
+Disallow: /quiz
+Disallow: /quiz/*
+Disallow: /api/
+
+# Host & Sitemap
+Host: https://ats-skill-certification.vercel.app
+Sitemap: https://ats-skill-certification.vercel.app/sitemap.xml

@@ -2,8 +2,15 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { Lock, Mail, ArrowRight, AlertCircle } from 'lucide-react';
+import { useSEO } from '../../hooks/useSEO';
 
 const LoginPage = () => {
+  useSEO({
+    title: 'Candidate & Admin Sign In — ATS Skill Certification',
+    description: 'Sign in to your ATS Skill Certification portal to take online qualification exams, track assessment progress, and view verified certificates.',
+    canonicalPath: '/login'
+  });
+
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();

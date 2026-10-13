@@ -18,7 +18,15 @@ import {
   ExternalLink
 } from 'lucide-react';
 
+import { useSEO } from '../../hooks/useSEO';
+
 const HomePage = () => {
+  useSEO({
+    title: 'ATS Skill Certification — Validate Your Skills. Showcase Your Achievement.',
+    description: 'Official online skill certification platform by Aman Tech Solutions. Take verified MCQ exams for B.Tech, BCA, BBA, B.Com, and CS/IT tracks to earn industry-recognized digital credentials.',
+    canonicalPath: '/'
+  });
+
   const [courses, setCourses] = useState([]);
   const [activeCategory, setActiveCategory] = useState('ALL');
   const [quickVerifyToken, setQuickVerifyToken] = useState('');

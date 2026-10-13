@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { Mail, ExternalLink, MapPin, Send, CheckCircle2 } from 'lucide-react';
+import { useSEO } from '../../hooks/useSEO';
 
 const ContactPage = () => {
+  useSEO({
+    title: 'Support & Helpdesk — Contact Aman Tech Solutions',
+    description: 'Get in touch with the ATS Skill Certification support team for candidate verification queries, institutional partnerships, and technical helpdesk.',
+    canonicalPath: '/contact'
+  });
+
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
